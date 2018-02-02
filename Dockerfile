@@ -34,7 +34,7 @@ COPY install-cassandra /tmp/install-cassandra
 
 
 #RUN /tmp/install-cassandra @@APACHE_CASSANDRA_VERSION@@ @@CUSTOM_BUILD@@
-RUN groupadd -r cassandra --gid=casandra && useradd -r -g cassandra --uid=casandra cassandra
+RUN groupadd -r cassandra --gid=313 && useradd -r -g cassandra --uid=313 cassandra
 
 ENV CASSANDRA_VERSION 3.11.1
 
@@ -50,7 +50,7 @@ ENTRYPOINT ["docker-entrypoint.sh"]
 RUN mkdir -p /var/lib/cassandra "$CASSANDRA_CONFIG" \
         && chown -R cassandra:cassandra /var/lib/cassandra "$CASSANDRA_CONFIG" \
         && chmod 777 /var/lib/cassandra "$CASSANDRA_CONFIG" \
-	&& chmod +x /var/log/cassandra "$CASSANDRA_CONFIG"
+	&& chmod 777 /var/log/cassandra "$CASSANDRA_CONFIG"
 VOLUME /var/lib/cassandra
 
 # 7000: intra-node communication
@@ -60,6 +60,6 @@ VOLUME /var/lib/cassandra
 # 9160: thrift service
 EXPOSE 7000 7001 7199 9042 9160
 
-USER cassandra
+USER 313
 
 CMD ["cassandra", "-f","-R"]
