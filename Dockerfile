@@ -34,7 +34,7 @@ COPY install-cassandra /tmp/install-cassandra
 
 
 #RUN /tmp/install-cassandra @@APACHE_CASSANDRA_VERSION@@ @@CUSTOM_BUILD@@
-RUN groupadd -r cassandra --gid=999 && useradd -r -g cassandra --uid=999 cassandra
+RUN groupadd -r cassandra --gid=casandra && useradd -r -g cassandra --uid=casandra cassandra
 
 ENV CASSANDRA_VERSION 3.11.1
 
@@ -60,6 +60,6 @@ VOLUME /var/lib/cassandra
 # 9160: thrift service
 EXPOSE 7000 7001 7199 9042 9160
 
-USER 999:999
+USER cassandra
 
 CMD ["cassandra", "-f","-R"]
