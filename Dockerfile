@@ -34,7 +34,7 @@ COPY install-cassandra /tmp/install-cassandra
 
 
 #RUN /tmp/install-cassandra @@APACHE_CASSANDRA_VERSION@@ @@CUSTOM_BUILD@@
-UN groupadd -r cassandra --gid=999 && useradd -r -g cassandra --uid=999 cassandra
+RUN groupadd -r cassandra --gid=999 && useradd -r -g cassandra --uid=999 cassandra
 
 ENV CASSANDRA_VERSION 3.11.1
 
