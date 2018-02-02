@@ -61,4 +61,4 @@ EXPOSE 7000 7001 7199 9042 9160
 
 USER 999:999
 
-CMD ["cassandra", "-f"]
+CMD ["cassandra", "-f","-R"]
