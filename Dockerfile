@@ -50,7 +50,7 @@ ENTRYPOINT ["docker-entrypoint.sh"]
 RUN mkdir -p /var/lib/cassandra "$CASSANDRA_CONFIG" \
         && chown -R cassandra:cassandra /var/lib/cassandra "$CASSANDRA_CONFIG" \
         && chmod 777 /var/lib/cassandra "$CASSANDRA_CONFIG" \
-	&& chmod +x /var/log/cassandra/gc.log
+	&& chmod +x /var/log/cassandra/gc.log "$CASSANDRA_CONFIG"
 VOLUME /var/lib/cassandra
 
 # 7000: intra-node communication
